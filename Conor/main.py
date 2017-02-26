@@ -8,16 +8,18 @@ class LED_board():
         -1. This is the value used to indicate a light is off'''
         self.array=[[-1]*L for _ in range(L)]
         self.size=L
-    '''
+
     def turn_on(self, start, end):
-        #set values from start to end to 1
-    
+        for i in range(start[0],end[0]+1):
+            for j in range(start[1], end[1]+1):
+                self.array[i][j]=1
+    '''
     def turn_off(self, start, end):
         #set values from start to end to -1
         
-    def switch(self, start, end):
-        #multiply values from start to end by -1
-    '''
+    def toggle(self, start, end):
+         #multiply values from start to end by -1
+    '''    
                 
 def read_file(link):
     '''Function which reads in a file from a URL and returns the
@@ -43,7 +45,7 @@ def main():
         if "turn on" in line:
             a,b,c,d,e=line.split() #splits string into 5 variables, with coordinates in c and e
             start_point,end_point=return_coordinates(c),return_coordinates(e)
-            #run board.turn_on(start, end)
+             #run board.turn_on(start, end)
         elif "turn off" in line:
             a,b,c,d,e=line.split()
             start_point, end_point=return_coordinates(c), return_coordinates(e)
