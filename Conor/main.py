@@ -18,7 +18,7 @@ class LED_board():
     def switch(self, start, end):
         #multiply values from start to end by -1
     '''
-         
+                
 def read_file(link):
     '''Function which reads in a file from a URL and returns the
     contents of the file in a string'''
@@ -26,27 +26,36 @@ def read_file(link):
     buffer=req.read().decode('utf-8')   
     return buffer
 
+def return_coordinates(a):
+    '''Function which reads in a string with coordinates "x,y" and returns
+    the coordinates as integers in a list'''
+    x,y=a.split(",")
+    return [int(x), int(y)]
+
 def main():
     link=sys.argv[2] #Reading link to file from command line parameter
     file=read_file(link)
     arraySize=int(file.split("\n")[0]) #Obtaining size of array from first line of file
     board=LED_board(arraySize)
     
-    '''
+    
     for line in file.split("\n"):
         if "turn on" in line:
-            #obtain start and end parameters from line
+            a,b,c,d,e=line.split() #splits string into 5 variables, with coordinates in c and e
+            start_point,end_point=return_coordinates(c),return_coordinates(e)
             #run board.turn_on(start, end)
         elif "turn off" in line:
-            #obtain start and end parameters from line
+            a,b,c,d,e=line.split()
+            start_point, end_point=return_coordinates(c), return_coordinates(e)
             #run board.turn_off(start end)
         elif "switch" in line:
-            #obtain start and end parameters from line
+            a,b,c,d=line.split()
+            start_point, end_point=return_coordinates(b), return_coordinates(d)
             #run board.switch(start,end)
         else:
             pass
         
     #on_count=number of lights on
     #print(on_count)
-    '''
+
     
