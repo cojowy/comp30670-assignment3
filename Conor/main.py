@@ -18,10 +18,11 @@ class LED_board():
         for i in range(start[0],end[0]+1):
             for j in range(start[1], end[1]+1):
                 self.array[i][j]=-1
-    '''    
+ 
     def toggle(self, start, end):
-         #multiply values from start to end by -1
-    '''    
+         for i in range(start[0],end[0]+1):
+            for j in range(start[1], end[1]+1):
+                self.array[i][j]*=-1   
                 
 def read_file(link):
     '''Function which reads in a file from a URL and returns the
