@@ -13,10 +13,12 @@ class LED_board():
         for i in range(start[0],end[0]+1):
             for j in range(start[1], end[1]+1):
                 self.array[i][j]=1
-    '''
+    
     def turn_off(self, start, end):
-        #set values from start to end to -1
-        
+        for i in range(start[0],end[0]+1):
+            for j in range(start[1], end[1]+1):
+                self.array[i][j]=-1
+    '''    
     def toggle(self, start, end):
          #multiply values from start to end by -1
     '''    
