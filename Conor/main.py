@@ -48,19 +48,24 @@ def main():
         if "turn on" in line:
             a,b,c,d,e=line.split() #splits string into 5 variables, with coordinates in c and e
             start_point,end_point=return_coordinates(c),return_coordinates(e)
-             #run board.turn_on(start, end)
+            board.turn_on(start_point, end_point)
         elif "turn off" in line:
             a,b,c,d,e=line.split()
             start_point, end_point=return_coordinates(c), return_coordinates(e)
-            #run board.turn_off(start end)
+            board.turn_off(start_point, end_point)
         elif "switch" in line:
             a,b,c,d=line.split()
             start_point, end_point=return_coordinates(b), return_coordinates(d)
-            #run board.switch(start,end)
+            board.toggle(start_point, end_point)
         else:
             pass
         
-    #on_count=number of lights on
-    #print(on_count)
+    on_count=0
+    for i in range(arraySize):
+        for j in range(arraySize):
+            if board.array[i][j]==1:
+                on_count+=1
+    print(on_count)
 
+main()
     
