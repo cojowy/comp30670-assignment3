@@ -10,43 +10,46 @@ class LED_board():
         self.size=L
 
     def turn_on(self, start, end):
-        if start[0]<0:
-            start[0]=0
-        if start[1]<0:
-            start[0]=0
-        if end[0]>=self.size:
-            end[0]=self.size-1
-        if end[1]>=self.size:
-            end[1]=self.size-1
-        for i in range(start[0],end[0]+1):
-            for j in range(start[1], end[1]+1):
-                self.array[i][j]=1
+        if start[0]<=end[0]&start[1]<=end[1]:
+            if start[0]<0:
+                start[0]=0
+            if start[1]<0:
+                start[1]=0
+            if end[0]>=self.size:
+                end[0]=self.size-1
+            if end[1]>=self.size:
+                end[1]=self.size-1
+            for i in range(start[0],end[0]+1):
+                for j in range(start[1], end[1]+1):
+                    self.array[i][j]=1
     
     def turn_off(self, start, end):
-        if start[0]<0:
-            start[0]=0
-        if start[1]<0:
-            start[0]=0
-        if end[0]>=self.size:
-           end[0]=self.size-1
-        if end[1]>=self.size:
-            end[1]=self.size-1
-        for i in range(start[0],end[0]+1):
-            for j in range(start[1], end[1]+1):
-                self.array[i][j]=-1
+        if start[0]<=end[0]&start[1]<=end[1]:
+            if start[0]<0:
+                start[0]=0
+            if start[1]<0:
+                start[1]=0
+            if end[0]>=self.size:
+               end[0]=self.size-1
+            if end[1]>=self.size:
+                end[1]=self.size-1
+            for i in range(start[0],end[0]+1):
+                for j in range(start[1], end[1]+1):
+                    self.array[i][j]=-1
  
     def toggle(self, start, end):
-        if start[0]<0:
-            start[0]=0
-        if start[1]<0:
-            start[0]=0
-        if end[0]>=self.size:
-            end[0]=self.size-1
-        if end[1]>=self.size:
-            end[1]=self.size-1
-        for i in range(start[0],end[0]+1):
-            for j in range(start[1], end[1]+1):
-                self.array[i][j]*=-1   
+        if start[0]<=end[0]&start[1]<=end[1]:
+            if start[0]<0:
+                start[0]=0
+            if start[1]<0:
+                start[1]=0
+            if end[0]>=self.size:
+                end[0]=self.size-1
+            if end[1]>=self.size:
+                end[1]=self.size-1
+            for i in range(start[0],end[0]+1):
+                for j in range(start[1], end[1]+1):
+                    self.array[i][j]*=-1   
                 
 def read_file(link):
     '''Function which reads in a file from a URL and returns the
@@ -96,4 +99,4 @@ def main():
                 on_count+=1
     print(on_count)
 
-    
+main()
