@@ -67,7 +67,6 @@ def main():
     arraySize=int(file.split("\n")[0]) #Obtaining size of array from first line of file
     board=LED_board(arraySize)
     
-    
     for line in file.split("\n"):
         if "turn on" in line:
             line=line.replace(" ,",",")
@@ -89,7 +88,7 @@ def main():
             board.toggle(start_point, end_point)
         else:
             pass
-        
+     
     on_count=0
     for i in range(arraySize):
         for j in range(arraySize):
@@ -97,5 +96,4 @@ def main():
                 on_count+=1
     print(on_count)
 
-main()
     
