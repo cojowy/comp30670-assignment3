@@ -98,5 +98,3 @@ def main():
             if board.array[i][j]==1:
                 on_count+=1
     print(on_count)
-
-main()
