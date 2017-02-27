@@ -70,14 +70,20 @@ def main():
     
     for line in file.split("\n"):
         if "turn on" in line:
+            line=line.replace(" ,",",")
+            line=line.replace(", ",",")
             a,b,c,d,e=line.split() #splits string into 5 variables, with coordinates in c and e
             start_point,end_point=return_coordinates(c),return_coordinates(e)
             board.turn_on(start_point, end_point)
         elif "turn off" in line:
+            line=line.replace(" ,",",")
+            line=line.replace(", ",",")
             a,b,c,d,e=line.split()
             start_point, end_point=return_coordinates(c), return_coordinates(e)
             board.turn_off(start_point, end_point)
         elif "switch" in line:
+            line=line.replace(" ,",",")
+            line=line.replace(", ",",")
             a,b,c,d=line.split()
             start_point, end_point=return_coordinates(b), return_coordinates(d)
             board.toggle(start_point, end_point)
