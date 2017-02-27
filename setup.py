@@ -9,6 +9,6 @@ setup(name="led_checker",
       licence="GPL3",
       packages=['Conor'],
       entry_points={
-          'console_scripts':['Led_checker=Conor.main:main']
+          'console_scripts':['led_checker=Conor.main:main']
           }
     )
