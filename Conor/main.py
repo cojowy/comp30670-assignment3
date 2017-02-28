@@ -52,10 +52,13 @@ class LED_board():
                     self.array[i][j]*=-1   
                 
 def read_file(link):
-    '''Function which reads in a file from a URL and returns the
+    '''Function which reads in a file from a URL or local file and returns the
     contents of the file in a string'''
-    req=urllib.request.urlopen(link)
-    buffer=req.read().decode('utf-8')   
+    if link.startswith("http://"):
+        req=urllib.request.urlopen(link)
+        buffer=req.read().decode('utf-8')
+    else:
+        buffer=open(link,'r').read() #.read() converts to a string
     return buffer
 
 def return_coordinates(a):
