@@ -49,10 +49,10 @@ class LED_board():
                 end[1]=self.size-1
             for i in range(start[0],end[0]+1):
                 for j in range(start[1], end[1]+1):
-                    if self.array[i][j]==True:
+                    if self.array[i][j]:
                         self.array[i][j]=False
                     else:
-                        self.array=True
+                        self.array[i][j]=True
                 
 def read_file(link):
     '''Function which reads in a file from a URL or local file and returns the

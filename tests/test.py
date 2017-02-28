@@ -14,7 +14,7 @@ def test_turn_on():
     on_count=0
     for i in range(0,5):
         for j in range(0,5):
-            if test_board.array[i][j]==1:
+            if test_board.array[i][j]==True:
                 on_count+=1
     eq_(on_count, 20, "Incorrect number of lights on")
 
@@ -25,7 +25,7 @@ def test_turn_off():
     on_count=0
     for i in range(0,5):
         for j in range(0,5):
-            if test_board.array[i][j]==1:
+            if test_board.array[i][j]==True:
                 on_count+=1
     eq_(on_count, 12, "Incorrect number of lights on")
     
@@ -35,6 +35,6 @@ def test_toggle():
     on_count=0
     for i in range(0,5):
         for j in range(0,5):
-            if test_board.array[i][j]==1:
+            if test_board.array[i][j]:
                 on_count+=1
     eq_(on_count, 9, "Incorrect number of lights")
