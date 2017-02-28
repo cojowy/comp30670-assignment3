@@ -6,7 +6,7 @@ class LED_board():
     def __init__(self, L):
         '''Board is initialized with an LxL array, with every value set to 
         -1. This is the value used to indicate a light is off'''
-        self.array=[[-1]*L for _ in range(L)]
+        self.array=[[False]*L for _ in range(L)]
         self.size=L
 
     def turn_on(self, start, end):
@@ -21,7 +21,7 @@ class LED_board():
                 end[1]=self.size-1
             for i in range(start[0],end[0]+1):
                 for j in range(start[1], end[1]+1):
-                    self.array[i][j]=1
+                    self.array[i][j]=True
     
     def turn_off(self, start, end):
         if start[0]<=end[0] and start[1]<=end[1]:
@@ -35,7 +35,7 @@ class LED_board():
                 end[1]=self.size-1
             for i in range(start[0],end[0]+1):
                 for j in range(start[1], end[1]+1):
-                    self.array[i][j]=-1
+                    self.array[i][j]=False
  
     def toggle(self, start, end):
         if start[0]<=end[0] and start[1]<=end[1]:
@@ -49,7 +49,10 @@ class LED_board():
                 end[1]=self.size-1
             for i in range(start[0],end[0]+1):
                 for j in range(start[1], end[1]+1):
-                    self.array[i][j]*=-1   
+                    if self.array[i][j]==True:
+                        self.array[i][j]=False
+                    else:
+                        self.array=True
                 
 def read_file(link):
     '''Function which reads in a file from a URL or local file and returns the
@@ -98,6 +101,6 @@ def main():
     on_count=0
     for i in range(arraySize):
         for j in range(arraySize):
-            if board.array[i][j]==1:
+            if board.array[i][j]==True:
                 on_count+=1
     print(on_count)
