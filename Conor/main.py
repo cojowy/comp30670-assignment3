@@ -71,36 +71,39 @@ def return_coordinates(a):
     return [int(x), int(y)]
 
 def main():
-    link=sys.argv[2] #Reading link to file from command line parameter
-    file=read_file(link)
-    arraySize=int(file.split("\n")[0]) #Obtaining size of array from first line of file
-    board=LED_board(arraySize)
-    
-    for line in file.split("\n"):
-        if "turn on" in line:
-            line=line.replace(" ,",",")
-            line=line.replace(", ",",")
-            a,b,c,d,e=line.split() #splits string into 5 variables, with coordinates in c and e
-            start_point,end_point=return_coordinates(c),return_coordinates(e)
-            board.turn_on(start_point, end_point)
-        elif "turn off" in line:
-            line=line.replace(" ,",",")
-            line=line.replace(", ",",")
-            a,b,c,d,e=line.split()
-            start_point, end_point=return_coordinates(c), return_coordinates(e)
-            board.turn_off(start_point, end_point)
-        elif "switch" in line:
-            line=line.replace(" ,",",")
-            line=line.replace(", ",",")
-            a,b,c,d=line.split()
-            start_point, end_point=return_coordinates(b), return_coordinates(d)
-            board.toggle(start_point, end_point)
-        else:
-            pass
-     
-    on_count=0
-    for i in range(arraySize):
-        for j in range(arraySize):
-            if board.array[i][j]==True:
-                on_count+=1
-    print(on_count)
+    if len(sys.argv)<3:
+        print("\nCheck the parameters, no file given.\nInput should be of form 'led_checker --input file_link'")
+    else:
+        link=sys.argv[2] #Reading link to file from command line parameter
+        file=read_file(link)
+        arraySize=int(file.split("\n")[0]) #Obtaining size of array from first line of file
+        board=LED_board(arraySize)
+        
+        for line in file.split("\n"):
+            if "turn on" in line:
+                line=line.replace(" ,",",")
+                line=line.replace(", ",",")
+                a,b,c,d,e=line.split() #splits string into 5 variables, with coordinates in c and e
+                start_point,end_point=return_coordinates(c),return_coordinates(e)
+                board.turn_on(start_point, end_point)
+            elif "turn off" in line:
+                line=line.replace(" ,",",")
+                line=line.replace(", ",",")
+                a,b,c,d,e=line.split()
+                start_point, end_point=return_coordinates(c), return_coordinates(e)
+                board.turn_off(start_point, end_point)
+            elif "switch" in line:
+                line=line.replace(" ,",",")
+                line=line.replace(", ",",")
+                a,b,c,d=line.split()
+                start_point, end_point=return_coordinates(b), return_coordinates(d)
+                board.toggle(start_point, end_point)
+            else:
+                pass
+         
+        on_count=0
+        for i in range(arraySize):
+            for j in range(arraySize):
+                if board.array[i][j]==True:
+                    on_count+=1
+        print(on_count)
