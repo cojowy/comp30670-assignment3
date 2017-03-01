@@ -70,6 +70,12 @@ def return_coordinates(a):
     x,y=a.split(",")
     return [int(x), int(y)]
 
+def comma_space_removal(line):
+    '''Function which removes whitespace surrounding the comma separating coordinates'''
+    line=line.replace(" ,", ",")
+    line=line.replace(", ", ",")
+    return line
+
 def main():
     if len(sys.argv)<3:
         print("\nCheck the parameters, no file given.\nInput should be of form 'led_checker --input file_link'")
@@ -81,20 +87,17 @@ def main():
         
         for line in file.split("\n"):
             if "turn on" in line:
-                line=line.replace(" ,",",")
-                line=line.replace(", ",",")
+                line=comma_space_removal(line)
                 a,b,c,d,e=line.split() #splits string into 5 variables, with coordinates in c and e
                 start_point,end_point=return_coordinates(c),return_coordinates(e)
                 board.turn_on(start_point, end_point)
             elif "turn off" in line:
-                line=line.replace(" ,",",")
-                line=line.replace(", ",",")
+                line=comma_space_removal(line)
                 a,b,c,d,e=line.split()
                 start_point, end_point=return_coordinates(c), return_coordinates(e)
                 board.turn_off(start_point, end_point)
             elif "switch" in line:
-                line=line.replace(" ,",",")
-                line=line.replace(", ",",")
+                line=comma_space_removal(line)
                 a,b,c,d=line.split()
                 start_point, end_point=return_coordinates(b), return_coordinates(d)
                 board.toggle(start_point, end_point)

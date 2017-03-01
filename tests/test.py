@@ -8,6 +8,10 @@ def test_file_read():
 def test_return_coordinates():
     eq_(return_coordinates("200,500"), [200,500], "Conversion error")
 
+def test_comma_space_removal():
+    test="12 ,13...12, 13"
+    eq_(comma_space_removal(test), "12,13...12,13", "Error in removing whitespace")
+
 def test_turn_on():
     test_board=LED_board(5)
     test_board.turn_on([0,0], [4,3])
