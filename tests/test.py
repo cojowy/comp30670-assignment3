@@ -12,6 +12,11 @@ def test_comma_space_removal():
     test="12 ,13...12, 13"
     eq_(comma_space_removal(test), "12,13...12,13", "Error in removing whitespace")
 
+def test_check_parameters():
+    test_board=LED_board(100)
+    test_val=test_board.check_parameters([-4,20],[5,150])
+    eq_(test_val, ([0,20],[5,99]), "Parameters not changed correctly")
+    
 def test_turn_on():
     test_board=LED_board(5)
     test_board.turn_on([0,0], [4,3])
